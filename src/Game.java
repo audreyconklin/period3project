@@ -10,6 +10,11 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 	private int key, count, score;
 	private ImageIcon Background;
 	private char screen;
+	int applesEaten;
+	int appleX;
+	int appleY;
+	private boolean appleEaten=false;
+	
 
 	public Game() {
 		new Thread(this).start();
@@ -26,7 +31,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 		screen = 'S';
 		//player = new Playership(350, 475, 80, 80);
 		//aliens = setAliens();
-		Background = new ImageIcon("Background.png");
+		Background = new ImageIcon("snakebackground");
 		
 	}
 
@@ -43,7 +48,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 
 		case 'G':
 			g2d.drawImage(Background.getImage(), 0, 0, getWidth(), getHeight(), this);
-			
+			spawnApple();
 			//win();
 			g2d.setFont(new Font("arial", Font.BOLD, 25));
 			g2d.setColor(Color.white);
@@ -173,15 +178,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 	}
 	
 
-	/*
-	 * } if (key == 39) { player.setX(3);
-	 * 
-	 * }
-	 * 
-	 * if (key == 37) { player.setX(-3); }
-	 * 
-	 * }
-	 */
+	
 	@Override
 
 	public void keyReleased(KeyEvent e) {

@@ -11,15 +11,15 @@ public void createFood() {
 
     // Set our food's x & y position to a random position
 
-    int location = (int) (Math.random() * RANDOMPOSITION);
-    foodX = ((location * Board.getDotSize()));
+   // int location = (int) (Math.random() * RANDOMPOSITION);
+    //foodX = ((location * Board.getDotSize()));
 
-    location = (int) (Math.random() * RANDOMPOSITION);
-    foodY = ((location * Board.getDotSize()));
+   // location = (int) (Math.random() * RANDOMPOSITION);
+   // foodY = ((location * Board.getDotSize()));
 
-    if ((foodX == snake.getSnakeX(0)) && (foodY == snake.getSnakeY(0))) {
-        createFood();
-    }
+  //  if ((foodX == snake.getSnakeX(0)) && (foodY == snake.getSnakeY(0))) {
+       // createFood();
+   // }
 }
 
 public int getFoodX() {
@@ -30,4 +30,5 @@ public int getFoodX() {
 public int getFoodY() {
     return foodY;
 }
+///public void spawnApple() { appleX = (int) (Math.random() * _____ }
 }
