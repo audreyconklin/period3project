@@ -35,7 +35,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 
 		case 'S':
 			g2d.drawImage(Background.getImage(), 0, 0, getWidth(), getHeight(), this);
-			//drawStartScreen(g2d);
+			//drawStartScreen(g2d);dd
 
 			break;
 
@@ -44,7 +44,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 		case 'G':
 			g2d.drawImage(Background.getImage(), 0, 0, getWidth(), getHeight(), this);
 			
-			win();
+			//win();
 			g2d.setFont(new Font("arial", Font.BOLD, 25));
 			g2d.setColor(Color.white);
 			g2d.drawString("Score=" + score, 10, 50);
