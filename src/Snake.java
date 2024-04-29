@@ -14,8 +14,8 @@
 		private boolean moveup;
 
 		public Snake() {
-			x=300;
-			y=300;
+			x=10;
+			y=10;
 			width=30;
 			height=30;
 			dx=3;
@@ -117,5 +117,45 @@
 
 		//return false;
 	 //}
-	}
-}
+
+		
+	
+
+	 // Initial position of the snake's head
+		    
+	
+
+		  // Function to move the snake
+		
+		    // Create a new head based on the current head and direction
+		  
+		
+
+		  // Function to change the direction of the snake
+		   changeDirection(newDirection) {
+		    // Ensure that the snake cannot turn back on itself
+		    if (
+		      (newDirection == "up" && this.direction != "down") ||
+		      (newDirection == "down" && this.direction != "up") ||
+		      (newDirection == "left" && this.direction != "right") ||
+		      (newDirection == "right" && this.direction != "left")
+		    ) {
+		      this.direction = newDirection;
+		    }
+		  
+
+		  // Function to check if the snake has collided with itself or the boundaries
+		
+
+		    // Check if the head collides with the boundaries
+		    if (
+		      head.x < 0 ||
+		      head.x >= boardWidth ||
+		      head.y < 0 ||
+		      head.y >= boardHeight
+		    ) {
+		      return true; // Collision with boundaries
+		    }
+		   }
+		
+		    
