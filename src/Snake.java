@@ -12,7 +12,7 @@
 		private int score;
 		private boolean movert;
 		private boolean moveup;
-
+		// milams fix
 		public Snake() {
 			x=10;
 			y=10;
