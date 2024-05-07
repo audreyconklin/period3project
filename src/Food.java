@@ -1,6 +1,6 @@
 public class Food {
 
-private Snake snake = new Snake();
+//private Snake snake = new Snake();
 private int foodX; // Stores X pos of our food
 private int foodY; // Stores Y pos of our food
 
