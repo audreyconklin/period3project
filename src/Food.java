@@ -1,34 +1,40 @@
+import java.util.Random;
+import java.awt.*;
+
 public class Food {
 
-//private Snake snake = new Snake();
-private int foodX; // Stores X pos of our food
-private int foodY; // Stores Y pos of our food
+    private final int posX;
+    private final int posY;
+    static int UNIT_SIZE = 25;
 
-// Used to determine random position of food
-private final int RANDOMPOSITION = 40;
+    public Food(int w, int h) {
+        posX = generatePos(w);
+        posY = generatePos(h);
+    }
 
-public void createFood() {
+    private int generatePos(int size) {
+        Random random = new Random();
+        return random.nextInt(size / UNIT_SIZE) * UNIT_SIZE;
+    }
 
-    // Set our food's x & y position to a random position
+    // draw the food
+    public void draw(Graphics g) {
+        g.setColor(Color.BLUE);
+        g.fillOval(getPosX(), getPosY(), UNIT_SIZE, UNIT_SIZE);
 
-   // int location = (int) (Math.random() * RANDOMPOSITION);
-    //foodX = ((location * Board.getDotSize()));
+    }
 
-   // location = (int) (Math.random() * RANDOMPOSITION);
-   // foodY = ((location * Board.getDotSize()));
+    public int getPosX() {
+        return posX;
+    }
 
-  //  if ((foodX == snake.getSnakeX(0)) && (foodY == snake.getSnakeY(0))) {
-       // createFood();
-   // }
-}
-
-public int getFoodX() {
-
-    return foodX;
-}
-
-public int getFoodY() {
-    return foodY;
-}
-///public void spawnApple() { appleX = (int) (Math.random() * _____ }
+    public int getPosY() {
+        return posY;
+    }
+    public int getWidth() {
+        return UNIT_SIZE;
+    }
+    public int getHeight() {
+        return UNIT_SIZE;
+    }
 }

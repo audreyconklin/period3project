@@ -5,11 +5,11 @@ import java.awt.*;
 		static int UNIT_SIZE = 25;
 		int[] x;
 		int[] y;
-		int startposX = 10;
-		int startposY = 150;
+		int startposX = 150;
+		int startposY = 100;
 
 		int GAME_UNITS;
-		int bodyParts = 5;
+		int bodyParts = 3;
 		char direction = 'R';
 		boolean isMoving = false;
 		
@@ -19,10 +19,13 @@ import java.awt.*;
 			x =new int[GAME_UNITS];
 			y =new int[GAME_UNITS];
 			isMoving = true;
+			int prevX = startposX;
 			// start it somewhere in the middle of the screen
 			for(int i = 0;i<bodyParts;i++) {
-				x[i] = i + startposX;
+				
+				x[i] =  prevX;
 				y[i] = startposY;
+				prevX -= UNIT_SIZE;
 			}
 		}
 
@@ -40,6 +43,12 @@ import java.awt.*;
 			}
 
 		}
+
+		public void grows() {
+			bodyParts++;
+		}
+
+	
 		// move the snake 
 		public void move() {
 			for(int i=bodyParts; i>0; i--) {
@@ -79,4 +88,33 @@ import java.awt.*;
 			}
 		  
 		} 
+
+		public boolean hitsFood(Rectangle food) {
+			Rectangle head = new Rectangle(x[0], y[0],  UNIT_SIZE, UNIT_SIZE);
+			return head.intersects(food);
+		
+		}
+		public boolean hitsItSelf () {
+			
+			Rectangle head = new Rectangle(x[0], y[0],  UNIT_SIZE, UNIT_SIZE);
+			// does the snake hit the tail
+			for (int i = bodyParts; i > 0; i--) {
+				Rectangle bodypart = new Rectangle(x[i], y[i],  UNIT_SIZE, UNIT_SIZE);
+				if (bodypart.intersects(head))
+					return true; 		
+				
+			}
+			return false;
+					
+		}
+		public int getHeadX() {
+			// return the position of the head
+			return x[0];
+		}
+	
+		public int getHeadY() {
+			// return the position of the head
+			return y[0];
+		}
+	
 }
