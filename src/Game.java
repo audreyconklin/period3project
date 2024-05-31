@@ -14,6 +14,9 @@ public class Game extends JPanel implements Runnable, KeyListener, ActionListene
 	private ImageIcon Background;
 	private char screen;
 	private boolean isStarted = false;
+	private Sound play;
+	private boolean playsound;
+	private Sound effects;
 
 	// timer is used to create an ActionListener that gets called every 150 MS 
 	Timer timer = new Timer(150, this);
@@ -27,7 +30,9 @@ public class Game extends JPanel implements Runnable, KeyListener, ActionListene
 		this.addKeyListener(this);
 		key = -1;
 		foodEaten= 0;
-
+		playsound = true;
+		effects = new Sound();
+		play = new Sound();
 		screen = 'S';
 		Background = new ImageIcon("1.jpg");
 		gameScreen = new ImageIcon("Game Screen.jpg");
@@ -120,7 +125,7 @@ public void reset() {
 				isStarted = true;
 				timer.start();
 			}
-
+			playsound=true;
 			g2d.drawImage(gameScreen.getImage(), 0, 0, getWidth(), getHeight(), this);
 			
 			// draw the snake
@@ -140,6 +145,10 @@ public void reset() {
 			g2d.setColor(Color.white);
 			g2d.drawString("You Win!! ", 280, 250);
 			g2d.drawString("Press Space To Restart", 160, 320);
+			if (playsound) {
+				playsound = false;
+				effects.playmusic("Hooray.wav");
+			}
 			break;
 
 		// lose screen
@@ -149,7 +158,10 @@ public void reset() {
 			g2d.setColor(Color.white);
 			g2d.drawString("You lose :( ", 280, 250);
 			g2d.drawString("Press Space To Restart", 160, 320);
-
+			if (playsound) {
+				playsound = false;
+				effects.playmusic("Lose.wav");
+			}
 			break;
 
 		}
